@@ -1,11 +1,25 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import SectionContainer from "@/components/SectionContainer.astro";
+import Hero from "@/components/Hero.astro";
+import Stack from "@/components/Stack.astro";
+import Layout from "../layouts/Layout.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+	<main class="px-4">
+		<SectionContainer>
+			<Hero />
+		</SectionContainer>
+	</main>
+	<div class="space-y-24">
+		<SectionContainer class="flex flex-col items-center mt-40">
+			<span class="flex items-center text-primary">STACK TECNOLÓGICO</span
+			>
+			<h2 class="text-4xl font-bold">Tecnologías que domino</h2>
+			<Stack />
+		</SectionContainer>
+	</div>
 </Layout>

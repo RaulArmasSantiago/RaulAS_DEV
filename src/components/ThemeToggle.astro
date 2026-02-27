@@ -1,0 +1,85 @@
+---
+// ThemeToggle.astro
+// Botón para alternar entre modo claro y oscuro.
+// Funciona leyendo/escribiendo la clase "dark" en el <html>.
+// El script persiste la preferencia en localStorage.
+---
+
+<button
+    id="theme-toggle"
+    aria-label="Cambiar tema"
+    class="flex items-center justify-center w-9 h-9 rounded-ui text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors duration-200"
+>
+    {/* Ícono Sol — visible en modo oscuro */}
+    <svg
+        id="icon-sun"
+        xmlns="http://www.w3.org/2000/svg"
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="hidden"
+    >
+        <circle cx="12" cy="12" r="4"></circle>
+        <path
+            d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+        ></path>
+    </svg>
+
+    {/* Ícono Luna — visible en modo claro */}
+    <svg
+        id="icon-moon"
+        xmlns="http://www.w3.org/2000/svg"
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    >
+        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+    </svg>
+</button>
+
+<script>
+    // ─── Lógica del toggle ────────────────────────────────────────────────────
+    const html = document.documentElement;
+    const toggle = document.getElementById("theme-toggle");
+    const iconSun = document.getElementById("icon-sun");
+    const iconMoon = document.getElementById("icon-moon");
+
+    // Lee preferencia guardada o usa la del sistema operativo
+    const savedTheme = localStorage.getItem("theme");
+    const systemDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+    ).matches;
+    const isDark = savedTheme === "dark" || (!savedTheme && systemDark);
+
+    // Aplica el tema inicial sin esperar al click
+    applyTheme(isDark);
+
+    // Cambia el tema al hacer click
+    toggle?.addEventListener("click", () => {
+        const nowDark = html.classList.contains("dark");
+        applyTheme(!nowDark);
+        localStorage.setItem("theme", !nowDark ? "dark" : "light");
+    });
+
+    function applyTheme(dark: boolean) {
+        if (dark) {
+            html.classList.add("dark");
+            iconSun?.classList.remove("hidden");
+            iconMoon?.classList.add("hidden");
+        } else {
+            html.classList.remove("dark");
+            iconSun?.classList.add("hidden");
+            iconMoon?.classList.remove("hidden");
+        }
+    }
+</script>

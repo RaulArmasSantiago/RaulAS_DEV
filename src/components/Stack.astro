@@ -1,0 +1,30 @@
+---
+const technologies = [
+    { name: "React", icon: "/icons/React.svg" },
+    { name: "C#", icon: "/icons/CSharp.svg" },
+    { name: "Angular", icon: "/icons/Angular.svg" },
+    { name: "Next.js", icon: "/icons/NextJs.svg" },
+    { name: "Astro", icon: "/icons/Astro.svg" },
+    { name: "Node.js", icon: "/icons/NodeJs.svg" },
+    { name: "MongoDB", icon: "/icons/Mongo.svg" },
+    { name: "Tailwind", icon: "/icons/Tailwind.svg" },
+    { name: "Firebase", icon: "/icons/Firebase.svg" },
+    { name: "TypeScript", icon: "/icons/TypeScript.svg" },
+    { name: "n8n", icon: "/icons/N8n.svg" },
+    { name: "Postgress", icon: "/icons/Postgres.svg" },
+    //   {name: "Docker", icon: "/icons/docker.svg"},
+    //   {name: "AWS", icon: "/icons/aws.svg"},
+];
+---
+
+<div class="flex flex-wrap justify-center items-center gap-4 mt-20">
+    {
+        technologies.map((tech) => {
+            return (
+                <div class="flex flex-col justify-center items-center rounded-lg bg-primary/30 p-2">
+                    <img src={tech.icon} alt={tech.name} class="w-20 h-20" />
+                </div>
+            );
+        })
+    }
+</div>

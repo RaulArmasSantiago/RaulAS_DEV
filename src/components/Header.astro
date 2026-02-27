@@ -1,0 +1,214 @@
+---
+// src/components/Header.astro
+// Para usar el ThemeToggle, importa el componente desde su ruta.
+import ThemeToggle from './ThemeToggle.astro';
+
+const navLinks = [
+  { label: 'Inicio',       href: '#inicio'       },
+  { label: 'Tecnologías',  href: '#tecnologias'  },
+  { label: 'Proyectos',    href: '#proyectos'    },
+  { label: 'Testimonios',  href: '#testimonios'  },
+//   { label: 'Contacto',     href: '#contacto'     },
+];
+---
+
+<!--
+  CÓMO SE USA EL TEMA AQUÍ:
+  Cada clase de Tailwind como "bg-background", "text-foreground", "border-border"
+  apunta a una CSS variable (--background, --foreground, --border).
+  Cuando el <html> tiene la clase "dark", esas variables cambian automáticamente
+  a los valores del modo oscuro definidos en global.css.
+  ¡No necesitas escribir clases "dark:" en casi ningún lado!
+-->
+
+<header id="header" class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+    <nav class="flex items-center justify-between h-16">
+
+      <!-- LOGO -->
+      <a
+        href="#inicio"
+        class="font-mono font-semibold text-lg text-foreground hover:text-primary transition-colors duration-200"
+        aria-label="Ir al inicio"
+      >
+        <span class="text-primary">&lt;</span>Dev
+        <span class="text-primary">/&gt;</span>
+      </a>
+
+      <!-- ── Nav links (desktop) ───────────────────────────────────────────── -->
+      <!--
+        text-muted-foreground → color secundario (gris)
+        hover:text-foreground → se vuelve texto principal al pasar el cursor
+        Ambos tokens cambian solos al alternar el tema.
+      -->
+      <ul class="hidden md:flex items-center gap-8">
+        {navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="
+                text-sm text-muted-foreground font-medium
+                hover:text-foreground
+                transition-colors duration-200
+                relative group
+              "
+            >
+              {link.label}
+              <!-- Underline animado al hacer hover -->
+              <span class="
+                absolute -bottom-0.5 left-0 w-0 h-px
+                bg-primary
+                group-hover:w-full
+                transition-all duration-300
+              "></span>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- ── Acciones (toggle + CTA) ──────────────────────────────────────── -->
+      <div class="flex items-center gap-3">
+        <!-- ThemeToggle ya trae su propia lógica, solo lo usas aquí -->
+        <ThemeToggle />
+
+        <!-- Botón CTA — usa bg-primary y text-primary-foreground -->
+        <a
+          href="#contacto"
+          class="
+            hidden md:inline-flex items-center
+            px-4 py-2 rounded-ui
+            bg-primary text-primary-foreground
+            text-sm font-medium
+            hover:opacity-90 active:scale-95
+            transition-all duration-200
+          "
+        >
+          Contáctame
+        </a>
+
+        <!-- Botón hamburguesa (mobile) -->
+        <button
+          id="menu-toggle"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+          class="
+            md:hidden flex flex-col justify-center items-center
+            w-9 h-9 rounded-ui gap-1.5
+            text-muted-foreground hover:text-foreground
+            hover:bg-secondary
+            transition-colors duration-200
+          "
+        >
+          <!-- Las tres líneas del ícono hamburguesa -->
+          <span id="bar-1" class="w-5 h-0.5 bg-current transition-all duration-300 origin-center"></span>
+          <span id="bar-2" class="w-5 h-0.5 bg-current transition-all duration-300"></span>
+          <span id="bar-3" class="w-5 h-0.5 bg-current transition-all duration-300 origin-center"></span>
+        </button>
+      </div>
+
+    </nav>
+  </div>
+
+  <!-- ── Menú mobile ─────────────────────────────────────────────────────── -->
+  <!--
+    bg-background → mismo fondo que la página, cambia con el tema
+    border-border  → borde sutil que también respeta el tema
+    Empieza con max-h-0 (colapsado) y se expande con JS al hacer click.
+  -->
+  <div
+    id="mobile-menu"
+    class="
+      md:hidden overflow-hidden
+      max-h-0 transition-all duration-300 ease-in-out
+      bg-background border-b border-border
+    "
+  >
+    <ul class="flex flex-col px-6 py-4 gap-1">
+      {navLinks.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="
+              mobile-link
+              block py-3 px-3 rounded-ui
+              text-sm font-medium text-muted-foreground
+              hover:text-foreground hover:bg-secondary
+              transition-colors duration-200
+            "
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+
+      <!-- CTA dentro del menú mobile -->
+      <li class="pt-2">
+        <a
+          href="#contacto"
+          class="
+            mobile-link
+            block text-center py-2.5 px-4 rounded-ui
+            bg-primary text-primary-foreground
+            text-sm font-medium
+            hover:opacity-90
+            transition-opacity duration-200
+          "
+        >
+          Contáctame
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<!-- Espaciado para que el contenido no quede bajo el header fijo -->
+<div class="h-16"></div>
+
+<script>
+  // ─── Toggle del menú mobile ──────────────────────────────────────────────
+  const menuToggle  = document.getElementById('menu-toggle');
+  const mobileMenu  = document.getElementById('mobile-menu');
+  const bar1        = document.getElementById('bar-1');
+  const bar2        = document.getElementById('bar-2');
+  const bar3        = document.getElementById('bar-3');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  let isOpen = false;
+
+  function toggleMenu(forceClose = false) {
+    isOpen = forceClose ? false : !isOpen;
+    menuToggle?.setAttribute('aria-expanded', String(isOpen));
+
+    // Expande o colapsa el menú
+    if (mobileMenu) {
+      mobileMenu.style.maxHeight = isOpen
+        ? `${mobileMenu.scrollHeight}px`
+        : '0px';
+    }
+
+    // Anima las líneas a una "X" cuando está abierto
+    if (bar1 && bar2 && bar3) {
+      bar1.style.transform = isOpen ? 'translateY(8px) rotate(45deg)' : '';
+      bar2.style.opacity   = isOpen ? '0' : '1';
+      bar3.style.transform = isOpen ? 'translateY(-8px) rotate(-45deg)' : '';
+    }
+  }
+
+  menuToggle?.addEventListener('click', () => toggleMenu());
+
+  // Cierra el menú al hacer click en cualquier link
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => toggleMenu(true));
+  });
+
+  // ─── Sombra del header al hacer scroll ──────────────────────────────────
+  const header = document.getElementById('header');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      header?.classList.add('shadow-sm');
+    } else {
+      header?.classList.remove('shadow-sm');
+    }
+  }, { passive: true });
+</script>

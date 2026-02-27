@@ -1,0 +1,134 @@
+/* ==========================================================================
+   global.css — Sistema de tokens con CSS Variables
+   Importa este archivo en tu layout principal de Astro.
+   ========================================================================== */
+
+/* ── 1. Fuentes desde Google Fonts ────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── 2. Tokens en modo CLARO (por defecto) ────────────────────────────────── */
+@layer base {
+  :root {
+    /* Fondos */
+    --background: 210 20% 98%;
+    /* #F7F8FA */
+    --foreground: 220 20% 10%;
+    /* #141A21 */
+
+    /* Acento principal */
+    --primary: 174 62% 40%;
+    /* #27A89A */
+    --primary-foreground: 0 0% 100%;
+    /* #FFFFFF */
+
+    /* Superficies secundarias */
+    --secondary: 210 15% 93%;
+    /* #EBEEF1 */
+    --secondary-foreground: 220 20% 10%;
+
+    /* Fondos atenuados */
+    --muted: 210 15% 95%;
+    /* #EFF1F4 */
+    --muted-foreground: 220 10% 46%;
+    /* #6B7280 */
+
+    /* Cards */
+    --card: 0 0% 100%;
+    /* #FFFFFF */
+    --card-foreground: 220 20% 10%;
+
+    /* Bordes */
+    --border: 210 15% 90%;
+    /* #E0E4E8 */
+
+    /* Secciones alternas */
+    --section-alt: 210 20% 96%;
+    /* #F0F3F6 */
+  }
+
+  /* ── 3. Tokens en modo OSCURO ─────────────────────────────────────────── */
+  /* Se activan cuando el elemento <html> tiene la clase "dark"             */
+  .dark {
+    /* Fondos */
+    --background: 220 20% 7%;
+    /* #0F1318 */
+    --foreground: 210 20% 95%;
+    /* #EFF1F4 */
+
+    /* Acento principal (ligeramente más brillante en dark) */
+    --primary: 174 62% 45%;
+    /* #2CBCAD */
+    --primary-foreground: 0 0% 100%;
+
+    /* Superficies secundarias */
+    --secondary: 220 15% 15%;
+    /* #1F2531 */
+    --secondary-foreground: 210 20% 95%;
+
+    /* Fondos atenuados */
+    --muted: 220 15% 12%;
+    --muted-foreground: 210 10% 55%;
+    /* #848B96 */
+
+    /* Cards */
+    --card: 220 18% 10%;
+    /* #151A22 */
+    --card-foreground: 210 20% 95%;
+
+    /* Bordes */
+    --border: 220 15% 18%;
+    /* #272E3A */
+
+    /* Secciones alternas */
+    --section-alt: 220 18% 10%;
+  }
+
+  /* ── 4. Estilos base globales ─────────────────────────────────────────── */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    /* Transición suave al cambiar de tema */
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Todos los bordes heredan el color del token */
+  *,
+  *::before,
+  *::after {
+    border-color: hsl(var(--border));
+  }
+}
+
+/* ── 5. Utilidades personalizadas ─────────────────────────────────────────── */
+@layer utilities {
+
+  /* Texto con gradiente acento */
+  /* Uso: <span class="text-gradient">digitales</span> */
+  .text-gradient {
+    background-image: linear-gradient(135deg,
+        hsl(174, 62%, 40%),
+        hsl(190, 60%, 50%));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Label estilo monospace uppercase (ej: "DESARROLLADOR DE SOFTWARE") */
+  /* Uso: <span class="label-tag">Desarrollador de Software</span> */
+  .label-tag {
+    @apply font-mono text-sm uppercase tracking-widest text-primary;
+  }
+
+  /* Padding estándar de sección */
+  /* Uso: <section class="section-padding"> */
+  .section-padding {
+    @apply py-20 md:py-28 px-6 md:px-12 lg:px-20;
+  }
+}
