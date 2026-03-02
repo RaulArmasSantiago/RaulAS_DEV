@@ -2,6 +2,7 @@
 // src/components/Header.astro
 // Para usar el ThemeToggle, importa el componente desde su ruta.
 import ThemeToggle from './ThemeToggle.astro';
+import Logo from '@/assets/img/Logo.png'
 
 const navLinks = [
   // { label: 'Inicio',       href: '#inicio'       },
@@ -31,8 +32,9 @@ const navLinks = [
         class="font-mono font-semibold text-lg text-foreground hover:text-primary transition-colors duration-200"
         aria-label="Ir al inicio"
       >
-        <span class="text-primary">&lt;</span>Dev
-        <span class="text-primary">/&gt;</span>
+        <!-- <span class="text-primary">&lt;</span>Dev
+        <span class="text-primary">/&gt;</span> -->
+        <img src={Logo.src} alt="Logo" class="h-10 " />
       </a>
 
       <!-- ── Nav links (desktop) ───────────────────────────────────────────── -->
