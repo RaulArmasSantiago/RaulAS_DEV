@@ -1,0 +1,48 @@
+---
+import Github from "@/assets/svgs/Github.astro";
+import Demo from "@/assets/svgs/Demo.astro";
+import StackPill from "@/components/StackPill.astro";
+const { title, description, image, stack, demo, repo } = Astro.props;
+---
+
+<section
+    class="flex flex-col rounded-ui overflow-hidden glow-primary transition-all duration-300"
+>
+    <img src={image} alt={title} class="w-full" />
+    <div class="p-2 flex flex-col flex-1 gap-2 bg-card">
+        <h3 class="label-tag">{title}</h3>
+        <p class="text-muted-foreground flex-1">
+            {description}
+        </p>
+        <div class="flex flex-col gap-3 pt-2">
+            <div class="flex flex-wrap gap-2">
+                {stack.map((item: string) => <StackPill stack={item} />)}
+            </div>
+
+            {
+                (demo || repo) && (
+                    <div class="flex items-center gap-2">
+                        {demo && (
+                            <a
+                                href={demo}
+                                class="flex items-center gap-2 text-primary py-2 px-4 rounded-lg"
+                            >
+                                <Demo class="w-4 h-4" />
+                                Demo
+                            </a>
+                        )}
+                        {repo && (
+                            <a
+                                href={repo}
+                                class="flex items-center gap-2 text-primary-foreground py-2 px-4 rounded-lg"
+                            >
+                                <Github class="w-4 h-4" />
+                                Repo
+                            </a>
+                        )}
+                    </div>
+                )
+            }
+        </div>
+    </div>
+</section>

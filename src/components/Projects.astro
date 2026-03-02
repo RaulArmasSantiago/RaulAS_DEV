@@ -1,0 +1,59 @@
+---
+import CardProject from "@/components/CardProject.astro";
+import projectn8n from "@/assets/img/projectn8n.jpg";
+
+const projets = [
+    {
+        title: "Verificación de taximetros",
+        description:
+            "Sistema de escritorio para la gestión de verificación de taximetros, implementado en CDMX y Saltillo Coahuila.",
+        image: "https://i.ytimg.com/vi/RA5WyUzfr4M/maxresdefault.jpg",
+        stack: ["CSharp", "Mysql"],
+        demo: "",
+        repo: "",
+    },
+    {
+        title: "Agente inteligente para cafeteria",
+        description:
+            "Agente inteligente para la gestión de ventas y reservaciones de una cafeteria.",
+        image: projectn8n.src,
+        stack: ["n8n", "Telegram"],
+        demo: "",
+        repo: "",
+    },
+    {
+        title: "Centro inteligente iOT",
+        description: "Sistema de monitoreo y control de dispositivos iOT.",
+        image: "https://i.ytimg.com/vi/RA5WyUzfr4M/maxresdefault.jpg",
+        stack: ["NodeJs", "React", "Mongo"],
+        demo: "",
+        repo: "",
+    },
+    {
+        title: "Raul Armas.dev",
+        description:
+            "Portafolio web para dar a conocer mis servicios como desarrollador de software.",
+        image: "/assets/img/projectn8n.jpg",
+        stack: ["Astro", "Tailwind"],
+        demo: "https://raularmas.dev",
+        repo: "https://github.com/RaulArmasSantiago/RaulAS_DEV",
+    },
+];
+---
+
+<div
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-20 max-w-7xl mx-auto px-6"
+>
+    {
+        projets.map((projet) => (
+            <CardProject
+                title={projet.title}
+                description={projet.description}
+                image={projet.image}
+                stack={projet.stack}
+                demo={projet.demo}
+                repo={projet.repo}
+            />
+        ))
+    }
+</div>

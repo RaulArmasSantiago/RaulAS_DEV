@@ -2,7 +2,9 @@
 import SectionContainer from "@/components/SectionContainer.astro";
 import Hero from "@/components/Hero.astro";
 import Stack from "@/components/Stack.astro";
+import Projects from "@/components/Projects.astro";
 import Layout from "../layouts/Layout.astro";
+import Contact from "@/components/Contact.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -15,11 +17,42 @@ import Layout from "../layouts/Layout.astro";
 		</SectionContainer>
 	</main>
 	<div class="space-y-24">
-		<SectionContainer class="flex flex-col items-center mt-40">
-			<span class="flex items-center text-primary">STACK TECNOLÓGICO</span
+		<SectionContainer
+			class="flex flex-col items-center mt-40 bg-section-alt py-10"
+		>
+			<span class="flex items-center text-primary label-tag"
+				>STACK TECNOLÓGICO</span
 			>
 			<h2 class="text-4xl font-bold">Tecnologías que domino</h2>
 			<Stack />
+		</SectionContainer>
+		<SectionContainer class="flex flex-col items-center py-10">
+			<span class="flex items-center text-primary label-tag"
+				>PORTAFOLIO</span
+			>
+			<h2 class="text-4xl font-bold">Proyectos Realizados</h2>
+			<Projects />
+		</SectionContainer>
+		<SectionContainer
+			class="flex flex-col items-center mt-40 bg-section-alt py-10"
+		>
+			<span class="flex items-center text-primary label-tag"
+				>TESTIMONIOS</span
+			>
+			<h2 class="text-4xl font-bold">Lo que dicen de mi trabajo</h2>
+			<span class="text-muted-foreground mt-4">Proximamente...</span>
+			<!-- <Projects /> -->
+		</SectionContainer>
+		<SectionContainer class="flex flex-col items-center py-10">
+			<span class="flex items-center text-primary label-tag"
+				>CONTACTO</span
+			>
+			<h2 class="text-4xl font-bold">¿Tienes un proyecto en mente?</h2>
+			<p class="text-muted-foreground text-center mt-4">
+				Cuéntame sobre tu idea y encontremos la mejor solución juntos.
+			</p>
+			<span class="text-muted-foreground mt-4">Proximamente...</span>
+			<!-- <Contact /> -->
 		</SectionContainer>
 	</div>
 </Layout>
