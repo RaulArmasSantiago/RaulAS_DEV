@@ -1,13 +1,15 @@
 ---
 import CardProject from "@/components/CardProject.astro";
 import projectn8n from "@/assets/img/projectn8n.jpg";
+import Veritax from "@/assets/img/Veritax.jpg";
+import Portfolio from "@/assets/img/Portafolio.png";
 
 const projets = [
     {
         title: "Verificación de taximetros",
         description:
             "Sistema de escritorio para la gestión de verificación de taximetros, implementado en CDMX y Saltillo Coahuila.",
-        image: "https://i.ytimg.com/vi/RA5WyUzfr4M/maxresdefault.jpg",
+        image: Veritax.src,
         stack: ["CSharp", "Mysql"],
         demo: "",
         repo: "",
@@ -21,19 +23,19 @@ const projets = [
         demo: "",
         repo: "",
     },
-    {
-        title: "Centro inteligente iOT",
-        description: "Sistema de monitoreo y control de dispositivos iOT.",
-        image: "https://i.ytimg.com/vi/RA5WyUzfr4M/maxresdefault.jpg",
-        stack: ["NodeJs", "React", "Mongo"],
-        demo: "",
-        repo: "",
-    },
+    // {
+    //     title: "Centro inteligente iOT",
+    //     description: "Sistema de monitoreo y control de dispositivos iOT.",
+    //     image: "https://i.ytimg.com/vi/RA5WyUzfr4M/maxresdefault.jpg",
+    //     stack: ["NodeJs", "React", "Mongo"],
+    //     demo: "",
+    //     repo: "",
+    // },
     {
         title: "Raul Armas.dev",
         description:
             "Portafolio web para dar a conocer mis servicios como desarrollador de software.",
-        image: "/assets/img/projectn8n.jpg",
+        image: Portfolio.src,
         stack: ["Astro", "Tailwind"],
         demo: "https://raularmas.dev",
         repo: "https://github.com/RaulArmasSantiago/RaulAS_DEV",

@@ -33,7 +33,7 @@ import Contact from "@/components/Contact.astro";
 			<h2 class="text-4xl font-bold">Proyectos Realizados</h2>
 			<Projects />
 		</SectionContainer>
-		<SectionContainer
+		<!-- <SectionContainer
 			class="flex flex-col items-center mt-40 bg-section-alt py-10"
 		>
 			<span class="flex items-center text-primary label-tag"
@@ -41,9 +41,11 @@ import Contact from "@/components/Contact.astro";
 			>
 			<h2 class="text-4xl font-bold">Lo que dicen de mi trabajo</h2>
 			<span class="text-muted-foreground mt-4">Proximamente...</span>
-			<!-- <Projects /> -->
-		</SectionContainer>
-		<SectionContainer class="flex flex-col items-center py-10">
+			<Projects />
+	</div> -->
+		<SectionContainer
+			class="flex flex-col items-center py-10 bg-section-alt"
+		>
 			<span class="flex items-center text-primary label-tag"
 				>CONTACTO</span
 			>
@@ -51,8 +53,7 @@ import Contact from "@/components/Contact.astro";
 			<p class="text-muted-foreground text-center mt-4">
 				Cuéntame sobre tu idea y encontremos la mejor solución juntos.
 			</p>
-			<span class="text-muted-foreground mt-4">Proximamente...</span>
-			<!-- <Contact /> -->
+			<Contact />
 		</SectionContainer>
 	</div>
 </Layout>
