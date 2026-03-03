@@ -5,6 +5,7 @@ import Stack from "@/components/Stack.astro";
 import Projects from "@/components/Projects.astro";
 import Layout from "../layouts/Layout.astro";
 import Contact from "@/components/Contact.astro";
+import Services from "@/components/Services.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -28,8 +29,18 @@ import Contact from "@/components/Contact.astro";
 			<Stack />
 		</SectionContainer>
 		<SectionContainer
-			id="proyectos"
+			id="servicios"
 			class="flex flex-col items-center py-10"
+		>
+			<span class="flex items-center text-primary label-tag"
+				>SERVICIOS</span
+			>
+			<h2 class="text-4xl font-bold">Servicios que ofrezco</h2>
+			<Services />
+		</SectionContainer>
+		<SectionContainer
+			id="proyectos"
+			class="flex flex-col items-center bg-section-alt py-10"
 		>
 			<span class="flex items-center text-primary label-tag"
 				>PORTAFOLIO</span
@@ -49,7 +60,7 @@ import Contact from "@/components/Contact.astro";
 	</div> -->
 		<SectionContainer
 			id="contacto"
-			class="flex flex-col items-center py-10 bg-section-alt"
+			class="flex flex-col items-center py-10"
 		>
 			<span class="flex items-center text-primary label-tag"
 				>CONTACTO</span

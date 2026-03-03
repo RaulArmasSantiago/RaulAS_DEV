@@ -1,0 +1,63 @@
+---
+import CardService from "@/components/CardService.astro";
+
+const services = [
+    {
+        title: "Desarrollo de software",
+        description:
+            "Desarrollo de software a la medida para empresas y organizaciones.",
+        price: "10,000.00 MXN",
+        time: "1-2 semanas",
+        features: [
+            "Planeación del proyecto",
+            "Desarrollo de software a la medida",
+            "Pruebas de software",
+            "Despliegue",
+            "Mantenimiento post-lanzamiento",
+        ],
+    },
+    {
+        title: "Creacion de paginas web",
+        description: "Creacion de paginas web para empresas y organizaciones.",
+        price: "3,000.00 MXN",
+        time: "1-2 semanas",
+        features: [
+            "Diseño UX/UI personalizado",
+            "Desarrollo web",
+            "Optimización SEO",
+            "Incluye dominio y hosting por 1 año",
+        ],
+    },
+    {
+        title: "Automatizaciones",
+        description:
+            "Automatizaciones para negocios, automatiza tareas repetitivas",
+        price: "5,000.00 MXN",
+        pricePerMonth: "1,000.00 MXN",
+        time: "1-2 semanas",
+        features: [
+            "Analisis de procesos",
+            "Diseño de automatización",
+            "Implementación",
+            "Mantenimiento post-lanzamiento",
+        ],
+    },
+];
+---
+
+<div
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-20 max-w-7xl mx-auto px-6"
+>
+    {
+        services.map((service) => (
+            <CardService
+                title={service.title}
+                description={service.description}
+                price={service.price}
+                time={service.time}
+                features={service.features}
+                pricePerMonth={service.pricePerMonth}
+            />
+        ))
+    }
+</div>
