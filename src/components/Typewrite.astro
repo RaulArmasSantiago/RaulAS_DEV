@@ -1,0 +1,60 @@
+---
+const { words = [] } = Astro.props;
+---
+
+<span id="typewriter" class="label-tag"></span>
+
+<style>
+    #typewriter::after {
+        content: "|";
+        animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+        0%,
+        50%,
+        100% {
+            opacity: 1;
+        }
+        25%,
+        75% {
+            opacity: 0;
+        }
+    }
+</style>
+
+<script define:vars={{ words }}>
+    const element = document.getElementById("typewriter");
+
+    if (!element) return;
+
+    let wordIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function type() {
+        const currentWord = words[wordIndex];
+
+        if (!deleting) {
+            element.textContent = currentWord.substring(0, charIndex++);
+        } else {
+            element.textContent = currentWord.substring(0, charIndex--);
+        }
+
+        let speed = deleting ? 50 : 100;
+
+        if (!deleting && charIndex === currentWord.length + 1) {
+            speed = 1500;
+            deleting = true;
+        }
+
+        if (deleting && charIndex === 0) {
+            deleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+        }
+
+        setTimeout(type, speed);
+    }
+
+    type();
+</script>

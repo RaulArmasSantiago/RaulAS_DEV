@@ -8,9 +8,12 @@ const { title, description, price, time, features, pricePerMonth } =
     class="flex flex-col bg-card rounded-lg p-6 shadow-sm border border-border glow-primary transition-all duration-300"
 >
     <h3 class="text-gradient text-2xl font-bold w-full text-center">{title}</h3>
-    <p class="text-muted-foreground mt-4 text-center">{description}</p>
-    <div class="mt-4">
-        <span class="text-primary text-2xl font-bold">Desde: {price}</span>
+    <p class="text-muted-foreground mt-4 text-center h-24">{description}</p>
+    <div class="mt-4 h-16">
+        <span
+            class="flex items-center justify-center text-center text-primary text-2xl font-bold"
+            >{price}</span
+        >
     </div>
     <ul class="mt-4 space-y-2 flex-1">
         {
@@ -25,7 +28,7 @@ const { title, description, price, time, features, pricePerMonth } =
     <div class="mt-4">
         <a
             href="#contacto"
-            class="flex items-center justify-center bg-primary w-full rounded-lg py-2"
+            class="flex items-center justify-center bg-primary text-primary-foreground w-full rounded-lg py-2"
             >Contactame</a
         >
     </div>

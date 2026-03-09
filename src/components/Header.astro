@@ -5,11 +5,10 @@ import ThemeToggle from './ThemeToggle.astro';
 import Logo from '@/assets/img/Logo.png'
 
 const navLinks = [
-  // { label: 'Inicio',       href: '#inicio'       },
-  { label: 'Tecnologías',  href: '#stack'  },
-  { label: 'Proyectos',    href: '#proyectos'    },
-  // { label: 'Testimonios',  href: '#testimonios'  },
-  // { label: 'Contacto',     href: '#contacto'     },
+  { label: 'Inicio',  href: '#inicio'  },
+  { label: 'Sobre Mi',  href: '#sobre-mi'  },
+  { label: 'Servicios',    href: '#servicios' },
+  { label: 'Proyectos',    href: '#proyectos' },
 ];
 ---
 
@@ -215,43 +214,101 @@ const navLinks = [
     }
   }, { passive: true });
 
+//   document.addEventListener("astro:page-load", () => {
+//     const sections = document.querySelectorAll("section");
+//     const navItems = document.querySelectorAll("header nav a[href^='#']")
+
+//     // const callback = (entries: any[]) => {
+//     //   entries.forEach((entry) => {
+//     //     if (entry.isIntersecting) {
+//     //       navItems.forEach((item) => {
+//     //         console.log(item.getAttribute("href"));
+//     //         console.log(`#${entry.target.id}`);
+//     //         if (item.getAttribute("href") === `#${entry.target.id}`) {
+//     //           item.classList.add("text-primary");
+//     //         } else {
+//     //           item.classList.remove("text-primary");
+//     //         }
+//     //       });
+//     //     }
+//     //   });
+//     // };
+
+//     const callback = (entries: any[]) => {
+
+//   entries.forEach((entry) => {
+
+//     if (!entry.isIntersecting) return;
+
+//     const id = entry.target.id;
+
+//     navItems.forEach((item) => {
+//       item.classList.remove("text-primary");
+//     });
+
+//     const activeLink = document.querySelector(`header nav a[href="#${id}"]`);
+
+//     activeLink?.classList.add("text-primary");
+
+//   });
+
+// };
+
+//     const observer = new IntersectionObserver(callback, {
+//       root: null,
+//       rootMargin: "-80px 0px 0px 0px",      
+//       threshold: 0.3,
+//     });
+
+//     sections.forEach((section) => {
+//       observer.observe(section);
+//     });
+
+//     document.onvisibilitychange = () => {
+//       if(document.visibilityState === "hidden") {
+//         observer.disconnect();
+//       } else {
+//         sections.forEach((section) => {
+//           observer.observe(section);
+//         });
+//       }
+//     }
+//   });
+
   document.addEventListener("astro:page-load", () => {
-    const sections = document.querySelectorAll("section");
-    const navItems = document.querySelectorAll("header div nav ul li a");
 
-    const callback = (entries: any[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          navItems.forEach((item) => {
-            if (item.getAttribute("aria-label") === entry.target.id) {
-              item.classList.add("text-primary");
-            } else {
-              item.classList.remove("text-primary");
-            }
-          });
-        }
-      });
-    };
+  const sections = document.querySelectorAll("section[data-section]");
+  const navLinks = document.querySelectorAll("header nav a[href^='#']");
 
-    const observer = new IntersectionObserver(callback, {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.3,
-    });
+  function setActiveSection() {
+
+    let current = "";
 
     sections.forEach((section) => {
-      observer.observe(section);
+
+      const rect = section.getBoundingClientRect();
+      const offset = 120; // altura aproximada del header
+
+      if (rect.top <= offset && rect.bottom > offset) {
+        current = section.id;
+      }
+
     });
 
-    document.onvisibilitychange = () => {
-      if(document.visibilityState === "hidden") {
-        observer.disconnect();
-      } else {
-        sections.forEach((section) => {
-          observer.observe(section);
-        });
+    navLinks.forEach((link) => {
+      link.classList.remove("text-primary");
+
+      if (link.getAttribute("href") === `#${current}`) {
+        link.classList.add("text-primary");
       }
-    }
-  });
+    });
+
+  }
+
+  window.addEventListener("scroll", setActiveSection, { passive: true });
+
+  setActiveSection();
+
+});
 
 </script>

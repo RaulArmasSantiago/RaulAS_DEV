@@ -1,0 +1,13 @@
+---
+import Whatsapp from "@/assets/svgs/Whatsapp.astro";
+import Mail from "@/assets/svgs/Mail.astro";
+import Place from "@/assets/svgs/Place.astro";
+const { title, icon } = Astro.props;
+---
+
+<div class="flex gap-4 px-10 py-4 glow-primary rounded-ui">
+    {icon === "whatsapp" && <Whatsapp />}
+    {icon === "mail" && <Mail />}
+    {icon === "place" && <Place />}
+    <span>{title}</span>
+</div>

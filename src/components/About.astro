@@ -1,0 +1,151 @@
+---
+// src/sections/Technologies.astro
+import StackPill from "./StackPill.astro";
+
+const technologies = [
+  { name: "React",       category: "Frontend",        icon: "React"    },
+  { name: "React Native",category: "Mobile",          icon: "React" },
+  { name: "Node.js",     category: "Backend",         icon: "Node" },
+  { name: "C#",          category: "Backend",         icon: "CSharp" },
+  { name: "n8n",         category: "Automatización",  icon: "n8n"   },
+  { name: "Firebase",    category: "Cloud",           icon: "Firebase"     },
+  { name: "PostgreSQL",  category: "Base de datos",   icon: "Postgres"     },
+  { name: "TypeScript",  category: "Lenguaje",        icon: "TypeScript"   },
+  { name: "Angular",     category: "Frontend",        icon: "Angular"    },
+  { name: "Astro",       category: "Frontend",        icon: "Astro"      },
+];
+
+const specialties = [
+  "Aplicaciones web modernas",
+  "Apps móviles híbridas",
+  "Automatización de procesos",
+  "Desarrollos a la medida",
+];
+
+const roles = [
+  "Desarrollador Full Stack",
+  "Desarrollador Mobile",
+  "Líder Técnico",
+  "Freelancer",
+];
+
+const stats = [
+  {
+    value: "+7",
+    label: "Años de experiencia",
+    icon: "calendar",
+  },
+  {
+    value: "+40",
+    label: "Proyectos concluidos",
+    icon: "check",
+  },
+];
+---
+
+  <div class="max-w-7xl mx-auto flex flex-col gap-6 mt-10">
+
+    <!-- ── FILA 1: Tecnologías (izq) + Stats & Especialidad (der) ─────────── -->
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-6">
+
+      <!-- Card: Tecnologías -->
+      <div class="bg-card border border-border rounded-ui p-6">
+        <h2 class="flex items-center gap-2 text-xl font-bold text-foreground mb-6">
+          <span class="text-primary font-mono">&lt;/&gt;</span>
+          Tecnologías que domino
+        </h2>
+
+        <!-- Grid interno 2 columnas -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {technologies.map((tech) => (
+            <div class="flex items-center gap-3 bg-secondary rounded-ui px-4 py-3 hover:border hover:border-primary/40 transition-all duration-200">
+              <!-- Ícono -->
+              <StackPill stack={tech.icon} />
+              <div>
+                <p class="text-sm font-semibold text-foreground">{tech.name}</p>
+                <p class="text-xs text-muted-foreground">{tech.category}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Columna derecha: Stats arriba + Especialidad abajo -->
+      <div class="flex flex-col gap-6">
+
+        <!-- Stats: grid 2 columnas -->
+        <div class="grid grid-cols-2 gap-6">
+          {stats.map((stat) => (
+            <div class="bg-card border border-border rounded-ui p-6 flex flex-col items-center justify-center gap-2 text-center">
+              <div class="text-primary">
+                {stat.icon === "calendar" && (
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                )}
+                {stat.icon === "check" && (
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18M9 16l2 2 4-4"/></svg>
+                )}
+              </div>
+              <span class="text-4xl font-bold text-foreground">{stat.value}</span>
+              <span class="text-sm text-muted-foreground">{stat.label}</span>
+            </div>
+          ))}
+        </div>
+
+        <!-- Especialidad -->
+        <div class="bg-card border border-border rounded-ui p-6 flex-1">
+          <h3 class="flex items-center gap-2 text-lg font-bold text-foreground mb-4">
+            <svg class="text-primary" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/><line x1="14.83" y1="9.17" x2="18.36" y2="5.64"/><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/></svg>
+            Especialidad
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            {specialties.map((s) => (
+              <span class="
+                px-4 py-2 rounded-full
+                border border-primary/40 text-primary
+                text-sm font-medium
+                hover:bg-primary/10 transition-colors duration-200
+              ">
+                {s}
+              </span>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── FILA 2: Roles (izq) + Filosofía (der) ──────────────────────────── -->
+    <div class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6">
+
+      <!-- Roles -->
+      <div class="bg-card border border-border rounded-ui p-6">
+        <h3 class="flex items-center gap-2 text-lg font-bold text-foreground mb-4">
+          <svg class="text-primary" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          Roles
+        </h3>
+        <ul class="flex flex-col gap-3">
+          {roles.map((role) => (
+            <li class="flex items-center gap-3 text-sm text-muted-foreground">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
+              {role}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Filosofía de trabajo -->
+      <div class="bg-card border border-border rounded-ui p-6">
+        <h3 class="flex items-center gap-2 text-lg font-bold text-foreground mb-4">
+          <svg class="text-primary" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 12V6"/><circle cx="19" cy="5" r="3"/></svg>
+          Filosofía de trabajo
+        </h3>
+        <p class="text-muted-foreground leading-relaxed">
+          Creo en el desarrollo ágil, la comunicación constante con el cliente y la entrega de
+          soluciones escalables. Cada proyecto es una oportunidad para generar impacto real a través
+          de la tecnología.
+        </p>
+      </div>
+
+    </div>
+
+  </div>

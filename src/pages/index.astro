@@ -1,7 +1,7 @@
 ---
 import SectionContainer from "@/components/SectionContainer.astro";
 import Hero from "@/components/Hero.astro";
-import Stack from "@/components/Stack.astro";
+import About from "@/components/About.astro";
 import Projects from "@/components/Projects.astro";
 import Layout from "../layouts/Layout.astro";
 import Contact from "@/components/Contact.astro";
@@ -13,29 +13,26 @@ import Services from "@/components/Services.astro";
 
 <Layout>
 	<main class="px-4">
-		<SectionContainer>
+		<SectionContainer id="inicio" class="flex items-center">
 			<Hero />
 		</SectionContainer>
 	</main>
 	<div class="space-y-24">
 		<SectionContainer
-			id="stack"
+			id="sobre-mi"
 			class="flex flex-col items-center mt-40 bg-section-alt py-10"
 		>
 			<span class="flex items-center text-primary label-tag"
-				>STACK TECNOLÓGICO</span
+				>SOBRE MÍ</span
 			>
-			<h2 class="text-4xl font-bold">Tecnologías que domino</h2>
-			<Stack />
+			<h2 class="text-4xl font-bold">Perfil profesional</h2>
+			<About />
 		</SectionContainer>
-		<SectionContainer
-			id="servicios"
-			class="flex flex-col items-center py-10"
-		>
+		<SectionContainer id="servicios" class="flex flex-col items-center">
 			<span class="flex items-center text-primary label-tag"
 				>SERVICIOS</span
 			>
-			<h2 class="text-4xl font-bold">Servicios que ofrezco</h2>
+			<h2 class="text-4xl font-bold">Servicios disponibles</h2>
 			<Services />
 		</SectionContainer>
 		<SectionContainer
@@ -60,7 +57,7 @@ import Services from "@/components/Services.astro";
 	</div> -->
 		<SectionContainer
 			id="contacto"
-			class="flex flex-col items-center py-10"
+			class="flex flex-col items-center py-10 mt-40"
 		>
 			<span class="flex items-center text-primary label-tag"
 				>CONTACTO</span

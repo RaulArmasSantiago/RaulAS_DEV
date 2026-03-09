@@ -1,8 +1,74 @@
 ---
+import CardContact from "./CardContact.astro";
 ---
 
-<form id="contact-form" class="flex flex-col gap-4 pt-10">
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div
+    class="flex flex-col md:flex-row items-center gap-20 w-screen max-w-full w-full px-20"
+>
+    <div class="flex flex-col px-4 gap-4 pt-10">
+        <span class="text-2xl font-bold text-center label-tag"
+            >Raul Armas Santiago</span
+        >
+        <CardContact title="+52 (55) 3550-6340" icon="whatsapp" />
+        <CardContact title="hola@raularmas.dev" icon="mail" />
+        <CardContact title="Xalapa, Ver. México" icon="place" />
+    </div>
+    <form
+        id="contact-form"
+        class="flex flex-col w-full flex-1 gap-4 md:pt-10"
+        onsubmit={}
+    >
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="input-wrapper">
+                <svg
+                    class="input-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <circle cx="12" cy="8" r="4"></circle><path
+                        d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path>
+                </svg>
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Tu nombre"
+                    class="input-field"
+                    required
+                />
+            </div>
+
+            <div class="input-wrapper">
+                <svg
+                    class="input-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path
+                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                    ></path>
+                </svg>
+                <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Tu teléfono"
+                    class="input-field"
+                />
+            </div>
+        </div>
         <div class="input-wrapper">
             <svg
                 class="input-icon"
@@ -16,21 +82,21 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
             >
-                <circle cx="12" cy="8" r="4"></circle><path
-                    d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path>
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect><path
+                    d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
             </svg>
             <input
-                type="text"
-                name="name"
-                placeholder="Tu nombre"
+                type="email"
+                name="email"
+                placeholder="Tu correo electrónico"
                 class="input-field"
                 required
             />
         </div>
-
-        <div class="input-wrapper">
+        <!-- Textarea Mensaje -->
+        <div class="input-wrapper items-start">
             <svg
-                class="input-icon"
+                class="input-icon mt-3"
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="16"
@@ -42,92 +108,106 @@
                 stroke-linejoin="round"
             >
                 <path
-                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                    d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
                 ></path>
             </svg>
-            <input
-                type="tel"
-                name="phone"
-                placeholder="Tu teléfono"
-                class="input-field"
-            />
+            <textarea
+                name="message"
+                placeholder="Cuéntame sobre tu proyecto..."
+                rows="5"
+                class="input-field resize-none"
+                required></textarea>
         </div>
-    </div>
-    <div class="input-wrapper">
-        <svg
-            class="input-icon"
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-        >
-            <rect width="20" height="16" x="2" y="4" rx="2"></rect><path
-                d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-        </svg>
-        <input
-            type="email"
-            name="email"
-            placeholder="Tu correo electrónico"
-            class="input-field"
-            required
-        />
-    </div>
-    <!-- Textarea Mensaje -->
-    <div class="input-wrapper items-start">
-        <svg
-            class="input-icon mt-3"
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-        >
-            <path
-                d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
-            ></path>
-        </svg>
-        <textarea
-            name="message"
-            placeholder="Cuéntame sobre tu proyecto..."
-            rows="5"
-            class="input-field resize-none"
-            required></textarea>
-    </div>
 
-    <!-- Botón submit -->
-    <button
-        type="submit"
-        class="w-full flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3.5 px-6 rounded-ui font-medium text-base hover:opacity-90 active:scale-[0.98] transition-all duration-200 mt-2"
-    >
-        <!-- Ícono avión de papel -->
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+        <!-- Feedback messages -->
+        <div
+            id="form-success"
+            class="hidden text-sm text-green-500 flex items-center gap-2"
         >
-            <path
-                d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.112z"
-            ></path>
-            <path d="m21.854 2.147-10.94 10.939"></path>
-        </svg>
-        Enviar mensaje
-    </button>
-</form>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <path d="M20 6 9 17l-5-5"></path>
+            </svg>
+            ¡Mensaje enviado! Me pondré en contacto contigo pronto.
+        </div>
+        <div
+            id="form-error"
+            class="hidden text-sm text-red-500 flex items-center gap-2"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <circle cx="12" cy="12" r="10"></circle><line
+                    x1="12"
+                    x2="12"
+                    y1="8"
+                    y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"
+                ></line>
+            </svg>
+            Hubo un error al enviar. Intenta de nuevo.
+        </div>
+
+        <!-- Botón submit -->
+        <button
+            type="submit"
+            id="submit-btn"
+            class="w-full flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3.5 px-6 rounded-ui font-medium text-base hover:opacity-90 active:scale-[0.98] transition-all duration-200 mt-2"
+        >
+            <!-- Ícono avión de papel -->
+            <svg
+                id="btn-icon-send"
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <path
+                    d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.112z"
+                ></path>
+                <path d="m21.854 2.147-10.94 10.939"></path>
+            </svg>
+            <!-- Spinner (oculto por defecto) -->
+            <svg
+                id="btn-icon-loading"
+                class="hidden animate-spin"
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <path d="M21 12a9 9 0 1 1-6.219-8.56"></path>
+            </svg>
+            <span id="btn-label">Enviar mensaje</span>
+        </button>
+    </form>
+</div>
 
 <style>
     /*
@@ -170,3 +250,67 @@
     */
     }
 </style>
+
+<script>
+    const form = document.getElementById("contact-form") as HTMLFormElement;
+    const submitBtn = document.getElementById(
+        "submit-btn"
+    ) as HTMLButtonElement;
+    const btnLabel = document.getElementById("btn-label") as HTMLSpanElement;
+    const btnIconSend = document.getElementById("btn-icon-send") as HTMLElement;
+    const btnIconLoading = document.getElementById(
+        "btn-icon-loading"
+    ) as HTMLElement;
+    const successMsg = document.getElementById(
+        "form-success"
+    ) as HTMLDivElement;
+    const errorMsg = document.getElementById("form-error") as HTMLDivElement;
+
+    function setLoading(loading: boolean) {
+        submitBtn.disabled = loading;
+        btnLabel.textContent = loading ? "Enviando..." : "Enviar mensaje";
+        btnIconSend.classList.toggle("hidden", loading);
+        btnIconLoading.classList.toggle("hidden", !loading);
+    }
+
+    function showFeedback(type: "success" | "error") {
+        successMsg.classList.add("hidden");
+        errorMsg.classList.add("hidden");
+
+        if (type === "success") {
+            successMsg.classList.remove("hidden");
+        } else {
+            errorMsg.classList.remove("hidden");
+            // Auto-hide error after 5s
+            setTimeout(() => errorMsg.classList.add("hidden"), 5000);
+        }
+    }
+
+    form?.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        setLoading(true);
+        successMsg.classList.add("hidden");
+        errorMsg.classList.add("hidden");
+
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            });
+
+            if (!response.ok) throw new Error("Error en el servidor");
+
+            showFeedback("success");
+            form.reset();
+        } catch (_) {
+            showFeedback("error");
+        } finally {
+            setLoading(false);
+        }
+    });
+</script>
