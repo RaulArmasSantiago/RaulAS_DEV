@@ -13,7 +13,7 @@ import Services from "@/components/Services.astro";
 
 <Layout>
 	<main class="px-4">
-		<SectionContainer id="inicio" class="flex items-center">
+		<SectionContainer id="inicio" class="flex items-center animate fade-up">
 			<Hero />
 		</SectionContainer>
 	</main>
@@ -28,7 +28,10 @@ import Services from "@/components/Services.astro";
 			<h2 class="text-4xl font-bold">Perfil profesional</h2>
 			<About />
 		</SectionContainer>
-		<SectionContainer id="servicios" class="flex flex-col items-center">
+		<SectionContainer
+			id="servicios"
+			class="flex flex-col items-center animate fade"
+		>
 			<span class="flex items-center text-primary label-tag"
 				>SERVICIOS</span
 			>
@@ -37,7 +40,7 @@ import Services from "@/components/Services.astro";
 		</SectionContainer>
 		<SectionContainer
 			id="proyectos"
-			class="flex flex-col items-center bg-section-alt py-10"
+			class="flex flex-col items-center bg-section-alt py-10 animate zoom"
 		>
 			<span class="flex items-center text-primary label-tag"
 				>PORTAFOLIO</span
